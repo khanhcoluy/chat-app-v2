@@ -13,9 +13,6 @@ const Chats = () => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
 
-  console.log(user);
-  // const userName = user.email.slice(0, -10);
-
   //get user photo
   const getFile = async (url) => {
     const response = await fetch(url);
@@ -40,7 +37,7 @@ const Chats = () => {
     axios
       .get('https://api.chatengine.io/users/me', {
         headers: {
-          'project-id': '346deee7-51ca-4a93-b1b4-f497c9afe3d7',
+          'project-id': process.env.REACT_APP_CHAT_ENGINE_PROJECT_ID,
           'user-name': user.email.slice(0, -10),
           'user-secret': user.uid
         }
